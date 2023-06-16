@@ -4,8 +4,11 @@
  */
 package servlets;
 
+import beans.Apprenant;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ayaya
  */
+
+
 public class ApprenantServlet extends HttpServlet {
 
     /**
@@ -26,21 +31,20 @@ public class ApprenantServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    List<Apprenant> listApprenant = new ArrayList();
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ApprenantServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ApprenantServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        String nom = request.getParameter("nom");
+        String prenom = request.getParameter("prenom");
+        String pseudo = request.getParameter("pseudo");
+        String email = request.getParameter("email");
+        String motDePasse = request.getParameter("motDePasse");
+        String motDePasseRep = request.getParameter("motDePasseRep");
+        Apprenant apprenant = new Apprenant(nom, prenom, pseudo, email, motDePasse, motDePasseRep);
+        listApprenant.add(apprenant);
+        request.setAttribute("list", listApprenant);
+        request.getRequestDispatcher("/pages/acceuil.jsp").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

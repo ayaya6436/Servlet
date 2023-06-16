@@ -9,9 +9,35 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="../css/style.css"/>
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+      <h1>Connexion Apprenant</h1>
+
+        <form action="#" method="post" class="contactform">
+              
+
+            <fieldset>
+                <div>
+                   
+                    
+                     <div>
+                        <label for="pseudo">Pseudo</label>
+                        <input type="text" name="pseudo" placeholder="Pseudo" required/>
+                    </div>
+                    
+                    <div>
+                        <label for="password">Mot de passe</label>
+                        <input type="password" name="motDePasse" placeholder="Mot de passe" required class="validate"/>
+                    </div>
+                    
+                   
+                </div>
+
+                <button type="button">Connexion</button>
+
+            </fieldset>
+        </form>
     </body>
 </html>
